@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Aggiungi specie e modello</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()"><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content fullscreen>
+  <ion-item>
+    <ion-label>Specie</ion-label>
+    <ion-select multiple="false"  [(ngModel)]="sel_specie" (ionChange)="this.specieChanged()">
+      
+      <ion-select-option *ngFor="let specie of specieList" value="{{specie}}">{{specie}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Modello</ion-label>
+    <ion-select multiple="false"  [(ngModel)]="sel_model_id">
+    
+      <ion-select-option *ngFor="let item of specieModelsList" value="{{item.id}}">{{item.name}}</ion-select-option>
+    </ion-select>
+</ion-item>
+</ion-content>

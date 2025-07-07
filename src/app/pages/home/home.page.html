@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      ARGOS
+    </ion-title>
+
+    <!-- Side menu button https://www.positronx.io/add-dynamic-side-menu-in-ionic-with-active-class/ -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="secondary">
+      <ion-button *ngIf="(user!=null)" (click)="createSurvey()" fill="outline" color="danger">Nuovo Rilievo</ion-button>
+      <ion-button (click)="logIn()"><ion-icon size="large" name="person-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  
+  <ion-card color="secondary">
+    <ion-card-content>
+      ARGOS (v 1.3.1)
+    </ion-card-content>
+  </ion-card>
+  <!-- //https://www.freakyjolly.com/ionic-firebase-crud-operations/#.X-2m2On0mEJ -->
+  <ion-card *ngFor="let item of activeSurveys()" color="primary">
+    <ion-card-header>
+      <ion-card-title>{{item.name}}</ion-card-title>
+      <ion-card-subtitle>Location: {{item.location}} Date: {{item.short_date}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-button shape="round" color="secondary" size="small" (click)="editSurvey(item)"> 
+        <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+
+      <ion-button shape="round" color="danger" size="small" (click)="deleteSurvey(item.id)">
+        <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

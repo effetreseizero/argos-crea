@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"><ion-icon name="close-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="micButtonClick()" size="large" shape="round" [color]="recording?'danger':'primary'">
+            <ion-icon slot="icon-only" name="mic-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-label>{{recognizedWord}}</ion-label>
+      </ion-row>
+      <ion-row>
+        <ion-range [(ngModel)]="this.probabilityThreshold" min="0" max="99" color="secondary" pin=True [disabled]="this.recording">
+          <ion-label slot="start">Soglia: 0</ion-label>
+          <ion-label slot="end">99</ion-label>
+        </ion-range>
+      </ion-row>
+  </ion-grid>
+
+</ion-content>

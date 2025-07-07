@@ -1,0 +1,50 @@
+//https://www.joshmorony.com/advanced-forms-validation-in-ionic-2/
+p {
+    font-size: 0.8em;
+    color: #d2d2d2;
+}
+
+//https://www.joshmorony.com/advanced-forms-validation-in-ionic-2/
+ion-slides {
+    height: 100%;
+    //https://stackoverflow.com/questions/54854794/ionic-4-ion-slides-vertical-scrolling-not-working
+    overflow-y: scroll;
+}
+//https://www.joshmorony.com/advanced-forms-validation-in-ionic-2/
+ion-slide {
+    display: block;
+}
+//https://www.joshmorony.com/advanced-forms-validation-in-ionic-2/
+ion-label, .select-text {
+    margin-left: 10px;
+}
+//https://www.joshmorony.com/advanced-forms-validation-in-ionic-2/
+.invalid {
+    border: 1px solid #ea6153;
+}
+//https://stackoverflow.com/questions/48283679/use-openlayers-4-with-angular-5
+.map {
+    width: 100%;
+    height: 100vh;
+}
+
+.container {
+    height: 200px;
+    background-color: green;
+    overflow: scroll; 
+    white-space: nowrap;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scroll {
+        overflow: auto;
+    }
+}
+
+
+#trees_grid{
+    height: 100%;
+}
+
+

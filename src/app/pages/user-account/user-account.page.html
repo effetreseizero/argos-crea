@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      User account
+    </ion-title>
+
+    <!-- Side menu button https://www.positronx.io/add-dynamic-side-menu-in-ionic-with-active-class/ -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-row>
+      <ion-col> 
+        <p>Email: {{user.email}}</p>
+        <p>Name: {{user.displayName}}</p>
+        <p>Email verified: {{user.emailVerified}}</p>
+        <p>ID: {{user.uid}}</p>
+
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col> 
+        <ion-button (click)="logout()" expand="block" color="dark">Logout</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

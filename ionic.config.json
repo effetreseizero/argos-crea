@@ -1,0 +1,7 @@
+{
+  "name": "argos-speech",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

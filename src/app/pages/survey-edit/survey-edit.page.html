@@ -1,0 +1,215 @@
+<!-- https://www.joshmorony.com/advanced-forms-validation-in-ionic-2/-->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Survey Edit
+    </ion-title>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="saveSurvey()"><ion-icon size="large" name="checkmark-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+
+   
+      
+    
+  </ion-toolbar>
+ 
+</ion-header>
+
+<ion-content  [fullscreen]="true">
+
+
+
+  <!--ion-fab *ngIf="segmentSelected==1" vertical="bottom" edge horizontal="end" slot="fixed">
+    <ion-fab-button color="danger"><ion-icon name="add"></ion-icon></ion-fab-button>
+    <ion-fab-list side="top">
+     
+    </ion-fab-list>
+  </ion-fab-->
+
+  <ion-slides [options]="slideOptsSurveySlider"  #surveySlider (ionSlideDidChange)="slideChanged($event)">
+    <!--survey slide-->
+    <ion-slide>
+      <p>ID: {{surveyId}}</p>
+      <form [formGroup]="surveyForm" (ngSubmit)="saveSurvey()">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Dati generali</ion-card-title>
+          </ion-card-header>
+          <ion-item>
+            <ion-label type="text" position="floating">Nome rilievo</ion-label>
+            <ion-input formControlName="name" ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label type="text" position="floating">Località</ion-label>
+            <ion-input formControlName="location" [class.invalid]="!surveyForm.controls.location.valid && (surveyForm.controls.location.dirty || submitAttempt)"></ion-input>
+          </ion-item>
+          
+        </ion-card>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Dati rilievo</ion-card-title>
+            <ion-item>
+              <ion-label type="text" position="floating">Superficie (ha)</ion-label>
+              <ion-input formControlName="area_ha" [class.invalid]="!surveyForm.controls.location.valid && (surveyForm.controls.location.dirty || submitAttempt)"></ion-input>
+            </ion-item>
+          </ion-card-header>
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Specie e modelli</ion-label>
+              <ion-button fill="outline" (click)="refreshModel()">
+                <ion-icon size="small" slot="icon-only" name="refresh-outline" ></ion-icon>
+              </ion-button>
+              <ion-button fill="outline" (click)="addModel()">
+                <ion-icon size="small" slot="icon-only" name="add" ></ion-icon>
+              </ion-button>
+            </ion-list-header>
+            <ion-item *ngFor="let model of selectedModels;let i=index">
+              <ion-label>{{model.specie}} {{model.name}}</ion-label>
+              <ion-button shape="round" slot="end" color="danger" size="small" (click)="deleteModel(i)">
+                <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+              </ion-button>
+            </ion-item>
+          </ion-list>
+          <!--ion-item>
+            <ion-label type="text" position="floating">Min d (cm)</ion-label>
+            <ion-input formControlName="min_d" [class.invalid]="!surveyForm.controls.min_d.valid && (surveyForm.controls.min_d.dirty || submitAttempt)"></ion-input>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label type="text" position="floating">Max d (cm)</ion-label>
+            <ion-input formControlName="max_d" [class.invalid]="!surveyForm.controls.max_d.valid && (surveyForm.controls.max_d.dirty || submitAttempt)"></ion-input>
+          </ion-item-->
+        </ion-card>
+        
+      </form>
+    </ion-slide>
+
+    <!--trees slide-->
+
+    <ion-slide>
+      <ion-grid fixed id="trees_grid">
+        <ion-row >
+          <ion-col>
+            <ion-chip color="primary">
+              <ion-label color="dark">N: {{treeNumber}}</ion-label>
+            </ion-chip>
+            <ion-chip color="primary">
+              <ion-label color="dark">N/ha: {{treeNumberHa.toFixed(2)}}</ion-label>
+            </ion-chip>
+            <ion-chip color="primary">
+              <ion-label color="dark">V: {{volume.toFixed(2)}} m3</ion-label>
+            </ion-chip>
+            <ion-chip color="primary">
+              <ion-label color="dark">V/ha: {{volumeHa.toFixed(2)}} m3</ion-label>
+            </ion-chip>
+            <ion-chip color="secondary">
+              <ion-label color="dark">G/ha: {{basalAreaHa.toFixed(2)}} m2/ha</ion-label>
+            </ion-chip>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-toggle (ionChange)="switchBtleCaliper($event)"></ion-toggle>
+              <ion-label>BTLE Caliper</ion-label>
+            </ion-buttons>
+            <ion-buttons slot="end">
+              <ion-button (click)="addTreeCalc()"><ion-icon name="calculator-outline"></ion-icon></ion-button>
+            <ion-button (click)="addTreeVoice()"><ion-icon name="mic-outline"></ion-icon></ion-button>
+            </ion-buttons>
+            
+            
+          </ion-toolbar>
+        </ion-row>
+
+        <ion-row >
+          <ion-col>
+            <ion-list>
+              <ion-list-header>
+                <h1>Piedilista di martellata</h1>
+              </ion-list-header>
+                <ion-item *ngFor="let item of treeList | slice:0:publicInfiniteScrollSlice; let i=index">
+                <ion-label>
+                  #{{treeList.length - i}} {{item.specie}} d:{{item.d1}} d2:{{item.d2}} h:{{item.h?item.h.toFixed(2):"--"}} V:{{item.v?item.v.toFixed(2):"--"}}
+                </ion-label>
+                <ion-button shape="round" slot="end" color="danger" size="small" (click)="deleteTree(i,item)">
+                  <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+                </ion-button>
+              
+              </ion-item>
+    
+            </ion-list>
+    
+            <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+              <ion-infinite-scroll-content
+                loadingSpinner="bubbles"
+                distance="1%"
+                loadingText="Loading more data...">
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+          </ion-col>
+        </ion-row>
+        
+        
+      </ion-grid>
+
+    </ion-slide>  
+
+
+    <!--graph slide-->
+    <ion-slide>
+      <ion-grid>
+        <ion-row><div id="vhatotPie" style="width:100%"></div></ion-row>
+        <ion-row><div id="diameterDist" style="width:100%"></div></ion-row>
+        <ion-row><div id="volumeDist" style="width:100%"></div></ion-row>
+        
+      </ion-grid>
+    </ion-slide> 
+
+
+    <!--map slide-->
+
+    <ion-slide>
+      <app-ol-map class="map"
+      [center]="[-483281,6904172]"
+      [zoom]="8.5"
+      (mapReady)="onMapReady($event)"
+      #app_ol_map
+      ></app-ol-map>
+
+      <ion-card>
+        <ion-item>
+          <ion-icon name="navigate-circle-outline" slot="start"></ion-icon>
+          <ion-icon name="menu-outline" slot="start"></ion-icon>
+        </ion-item>
+        <ion-card-content>
+          {{lastcoords.latitude}}
+          {{lastcoords.longitude}}
+          {{lastcoords.timestamp}}
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+  
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="segmentSelected" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="0">
+        <ion-label>Rilievo</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        <ion-label>Lista</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        <ion-label>Grafici</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="3">
+        <ion-label>Mappa</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

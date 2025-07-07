@@ -1,0 +1,184 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Settings
+    </ion-title>
+
+    <!-- Side menu button https://www.positronx.io/add-dynamic-side-menu-in-ionic-with-active-class/ -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="secondary">
+      <ion-button (click)="saveSettings()" fill="outline" color="danger">Save</ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="settingsForm">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Cavalletto Bluetooth</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-label type="text" position="floating">BTLE Service Hex</ion-label>
+        <ion-input formControlName="caliper_btle_service" [class.invalid]="!settingsForm.controls.caliper_btle_service.valid && (settingsForm.controls.caliper_btle_service.dirty)"></ion-input>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Cavalletto Bluetooth Diametro</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-label type="text" position="floating">BTLE Characteristic Hex</ion-label>
+        <ion-input formControlName="caliper_btle_diameter_charact" [class.invalid]="!settingsForm.controls.caliper_btle_diameter_charact.valid && (settingsForm.controls.caliper_btle_diameter_charact.dirty)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Binary decode</ion-label>
+        <ion-select formControlName="caliper_btle_diameter_decode" >
+          <ion-select-option value="Int8">Int8</ion-select-option>
+          <ion-select-option value="Int16">Int16</ion-select-option>
+          <ion-select-option value="Int32">Int32</ion-select-option>
+          <ion-select-option value="Uint8">Uint8</ion-select-option>
+          <ion-select-option value="Uint16">Uint16</ion-select-option>
+          <ion-select-option value="Uint32">Uint32</ion-select-option>
+          <ion-select-option value="Float32">Float32</ion-select-option>
+          <ion-select-option value="Float64">Float64</ion-select-option>
+          <ion-select-option value="BigInt64">BigInt64</ion-select-option>
+          <ion-select-option value="BigUint64">BigUint64</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label type="text" position="floating">Binary Offset</ion-label>
+        <ion-input type="number" formControlName="caliper_btle_diameter_offset" [class.invalid]="!settingsForm.controls.caliper_btle_diameter_offset.valid && (settingsForm.controls.caliper_btle_diameter_offset.dirty)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Binary Endian</ion-label>
+        <ion-select formControlName="caliper_btle_diameter_endian">
+          <ion-select-option value="true">Little Endian</ion-select-option>
+          <ion-select-option value="false">Big Endian</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Cavalletto Bluetooth Contatore</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-label type="text" position="floating">BTLE Characteristic Hex</ion-label>
+        <ion-input formControlName="caliper_btle_counter_charact" [class.invalid]="!settingsForm.controls.caliper_btle_counter_charact.valid && (settingsForm.controls.caliper_btle_counter_charact.dirty)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Binary decode</ion-label>
+        <ion-select formControlName="caliper_btle_counter_decode" >
+          <ion-select-option value="Int8">Int8</ion-select-option>
+          <ion-select-option value="Int16">Int16</ion-select-option>
+          <ion-select-option value="Int32">Int32</ion-select-option>
+          <ion-select-option value="Uint8">Uint8</ion-select-option>
+          <ion-select-option value="Uint16">Uint16</ion-select-option>
+          <ion-select-option value="Uint32">Uint32</ion-select-option>
+          <ion-select-option value="Float32">Float32</ion-select-option>
+          <ion-select-option value="Float64">Float64</ion-select-option>
+          <ion-select-option value="BigInt64">BigInt64</ion-select-option>
+          <ion-select-option value="BigUint64">BigUint64</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label type="text" position="floating">Binary Offset</ion-label>
+        <ion-input type="number" formControlName="caliper_btle_counter_offset" [class.invalid]="!settingsForm.controls.caliper_btle_counter_offset.valid && (settingsForm.controls.caliper_btle_counter_offset.dirty)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Binary Endian</ion-label>
+        <ion-select formControlName="caliper_btle_counter_endian">
+          <ion-select-option value="true">Little Endian</ion-select-option>
+          <ion-select-option value="false">Big Endian</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Cavalletto Bluetooth Max Specie</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-label type="text" position="floating">BTLE Characteristic Hex</ion-label>
+        <ion-input formControlName="caliper_btle_maxspecie_charact" [class.invalid]="!settingsForm.controls.caliper_btle_maxspecie_charact.valid && (settingsForm.controls.caliper_btle_maxspecie_charact.dirty)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Binary decode</ion-label>
+        <ion-select formControlName="caliper_btle_maxspecie_decode" >
+          <ion-select-option value="Int8">Int8</ion-select-option>
+          <ion-select-option value="Int16">Int16</ion-select-option>
+          <ion-select-option value="Int32">Int32</ion-select-option>
+          <ion-select-option value="Uint8">Uint8</ion-select-option>
+          <ion-select-option value="Uint16">Uint16</ion-select-option>
+          <ion-select-option value="Uint32">Uint32</ion-select-option>
+          <ion-select-option value="Float32">Float32</ion-select-option>
+          <ion-select-option value="Float64">Float64</ion-select-option>
+          <ion-select-option value="BigInt64">BigInt64</ion-select-option>
+          <ion-select-option value="BigUint64">BigUint64</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label type="text" position="floating">Binary Offset</ion-label>
+        <ion-input type="number" formControlName="caliper_btle_maxspecie_offset" [class.invalid]="!settingsForm.controls.caliper_btle_maxspecie_offset.valid && (settingsForm.controls.caliper_btle_maxspecie_offset.dirty)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Binary Endian</ion-label>
+        <ion-select formControlName="caliper_btle_maxspecie_endian">
+          <ion-select-option value="true">Little Endian</ion-select-option>
+          <ion-select-option value="false">Big Endian</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Cavalletto Bluetooth Specie</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-label type="text" position="floating">BTLE Characteristic Hex</ion-label>
+        <ion-input formControlName="caliper_btle_specie_charact" [class.invalid]="!settingsForm.controls.caliper_btle_specie_charact.valid && (settingsForm.controls.caliper_btle_specie_charact.dirty)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Binary decode</ion-label>
+        <ion-select formControlName="caliper_btle_specie_decode" >
+          <ion-select-option value="Int8">Int8</ion-select-option>
+          <ion-select-option value="Int16">Int16</ion-select-option>
+          <ion-select-option value="Int32">Int32</ion-select-option>
+          <ion-select-option value="Uint8">Uint8</ion-select-option>
+          <ion-select-option value="Uint16">Uint16</ion-select-option>
+          <ion-select-option value="Uint32">Uint32</ion-select-option>
+          <ion-select-option value="Float32">Float32</ion-select-option>
+          <ion-select-option value="Float64">Float64</ion-select-option>
+          <ion-select-option value="BigInt64">BigInt64</ion-select-option>
+          <ion-select-option value="BigUint64">BigUint64</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label type="text" position="floating">Binary Offset</ion-label>
+        <ion-input type="number" formControlName="caliper_btle_specie_offset" [class.invalid]="!settingsForm.controls.caliper_btle_specie_offset.valid && (settingsForm.controls.caliper_btle_specie_offset.dirty)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Binary Endian</ion-label>
+        <ion-select formControlName="caliper_btle_specie_endian">
+          <ion-select-option value="true">Little Endian</ion-select-option>
+          <ion-select-option value="false">Big Endian</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>DEBUG</ion-card-title>
+      </ion-card-header>
+      <ion-item>
+        <ion-label type="text" >Debug random error position</ion-label>
+        <ion-toggle formControlName="gps_random_error" [class.invalid]="!settingsForm.controls.gps_random_error.valid && (settingsForm.controls.gps_random_error.dirty)"></ion-toggle>
+      </ion-item>
+      <ion-item>
+        <ion-label type="text" >Debug random caliper data</ion-label>
+        <ion-toggle formControlName="caliper_random_data" [class.invalid]="!settingsForm.controls.caliper_random_data.valid && (settingsForm.controls.caliper_random_data.dirty)"></ion-toggle>
+      </ion-item>
+    </ion-card>
+  </form>
+</ion-content>

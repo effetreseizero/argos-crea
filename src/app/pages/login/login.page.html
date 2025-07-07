@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Login
+    </ion-title>
+
+    <!-- Side menu button https://www.positronx.io/add-dynamic-side-menu-in-ionic-with-active-class/ -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <form>    
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" #email required></ion-input>
+      </ion-item> 
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" #password required></ion-input>
+      </ion-item>
+  
+      <ion-row>
+        <ion-col> 
+        <ion-button type="submit" (click)="emailLogin(email, password)" expand="block">Login</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col> 
+          <ion-button (click)="registration()" expand="block" color="light">Register</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col> 
+          <ion-button (click)="googleLogin()" expand="block" color="dark">Log In with Google</ion-button>
+        </ion-col>
+      </ion-row>
+      
+    </form>
+    
+  </div>
+</ion-content>

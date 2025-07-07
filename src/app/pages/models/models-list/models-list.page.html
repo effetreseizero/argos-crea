@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Modelli volume
+    </ion-title>
+
+    <!-- Side menu button https://www.positronx.io/add-dynamic-side-menu-in-ionic-with-active-class/ -->
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="secondary">
+      <ion-button *ngIf="(user!=null)" (click)="createModel()" fill="outline" color="danger">Nuovo Modello</ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <!-- //https://www.freakyjolly.com/ionic-firebase-crud-operations/#.X-2m2On0mEJ -->
+  <ion-card *ngFor="let item of activeModels()" color="ligth">
+    <ion-card-header>
+      <ion-card-title>{{item.name}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-button shape="round" color="secondary" size="small" (click)="editModel(item)"> 
+        <ion-icon size="small" slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+      <ion-button shape="round" color="primary" size="small" (click)="duplicateModel(item.id)">
+        <ion-icon size="small" slot="icon-only" name="copy"></ion-icon>
+      </ion-button>
+
+      <ion-button shape="round" color="danger" size="small" (click)="deleteModel(item.id)">
+        <ion-icon size="small" slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

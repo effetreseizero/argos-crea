@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <!--https://www.angularjswiki.com/angular/cant-bind-to-ngmodel-since-it-isnt-a-known-property-of-input/-->
+      <ion-select color="dark" [(ngModel)]="selected_model" placeholder="Specie">
+        <!--https://stackoverflow.com/questions/62367201/ngfor-doesnt-work-in-modal-angular-ionic-->
+        <ion-select-option *ngFor="let model of selectedModels" [value]="model.id">{{model.specie}}</ion-select-option>
+      </ion-select>
+      <ion-chip (click)="modifyD('d1')" color="dark" >
+        <ion-label color="light"><h2>D1: {{d1}}</h2></ion-label>
+      </ion-chip>
+      <ion-chip (click)="modifyD('d2')" color="dark" >
+       <ion-label color="light"><h2>D2: {{d2}}</h2></ion-label>
+      </ion-chip>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="addCalcTree()"><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button shape="round" color="dark" (click)="click('7')">7</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button shape="round" color="dark" (click)="click('8')">8</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button shape="round" color="dark" (click)="click('9')">9</ion-button>
+        </ion-col>
+      
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button shape="round" color="dark" (click)="click('4')">4</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button shape="round" color="dark" (click)="click('5')">5</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button shape="round" color="dark" (click)="click('6')">6</ion-button>
+        </ion-col>
+    
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button shape="round" color="dark" (click)="click('1')">1</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button shape="round" color="dark" (click)="click('2')">2</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button shape="round" color="dark" (click)="click('3')">3</ion-button>
+        </ion-col>
+      
+      </ion-row>
+      <ion-row>
+        <ion-col size="8">
+          <ion-button shape="round" color="dark" (click)="click('0')" class="double-width">0</ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button shape="round" color="light" (click)="cancelCalc()">C</ion-button>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <ion-toolbar>
+    <ion-toggle slot="end" [(ngModel)]="random_coords">rand coords</ion-toggle>
+  </ion-toolbar>
+ 
+
+</ion-content>
