@@ -1,6 +1,6 @@
 # Argos Crea
 
-Argos Crea is a web-based application designed to facilitate speech-to-text (STT) tasks, particularly for forestry applications. The software leverages the Italian Forestry Speech Commands dataset, which is specifically curated and used to train the STT engine.
+Argos Crea is a web-based application the enables users to wirelessly transmit precise forestry measurements (such as tree diameters) directly from a Bluetooth caliper into the application, streamlining the data collection process and reducing manual entry errors. The web application is also designed to facilitate speech-to-text (STT) tasks, particularly for forestry applications. The software leverages the Italian Forestry Speech Commands dataset, which is specifically curated and used to train the STT engine. By combining modern STT technology with Bluetooth measurement devices, Argos Crea offers a comprehensive digital toolset for efficient and accurate forestry data acquisition.
 
 ## Technologies Used
 
