@@ -1,6 +1,6 @@
-# Argos Speech
+# Argos Crea
 
-Argos Speech is a web-based application designed to facilitate speech-to-text (STT) tasks, particularly for forestry applications. The software leverages the Italian Forestry Speech Commands dataset, which is specifically curated and used to train the STT engine.
+Argos Crea is a web-based application designed to facilitate speech-to-text (STT) tasks, particularly for forestry applications. The software leverages the Italian Forestry Speech Commands dataset, which is specifically curated and used to train the STT engine.
 
 ## Technologies Used
 
@@ -27,8 +27,8 @@ Argos Speech is a web-based application designed to facilitate speech-to-text (S
 
 1. **Clone the repository**  
    ```sh
-   git clone https://github.com/effetreseizero/argos-speech.git
-   cd argos-speech
+   git clone https://github.com/effetreseizero/argos-crea.git
+   cd argos-crea
    ```
 
 2. **Install dependencies**  
